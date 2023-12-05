@@ -1,0 +1,15 @@
+{
+    "ColocSusie.map1": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/map1.yaml",
+    "ColocSusie.list1": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/Finn_traits_R11.tsv",
+    "ColocSusie.bgenInf1": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/bgenInf1.yaml",
+    "ColocSusie.clumpGeno1": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/ldref/R11_LD", 
+    "ColocSusie.sigThresh1": 5e-8,
+
+    "ColocSusie.map2": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/map2.yaml",
+    "ColocSusie.list2": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/Olink_R11_batch12.tsv",
+    "ColocSusie.bgenInf2": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/bgenInf2.yaml",
+    "ColocSusie.clumpGeno2": "gs://zz-red/Omics/Proteomics/Batch12_R11/coloc.susie/input/ldref/R11_LD", 
+    "ColocSusie.sigThresh2": 5e-8,
+
+    "ColocSusie.windowKB": 1500
+}
