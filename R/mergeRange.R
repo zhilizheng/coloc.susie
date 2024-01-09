@@ -75,6 +75,8 @@ for(chr.cur in chrs){
         bSelect = FALSE
         for(idx in sel_idx:n){
             if(dt.cur[idx]$low_BP > up_BP){
+                # prevent from select the present block indicated by idx. 
+                idx = idx - 1
                 start = dt.cur[sel_idx]$low_BP
                 end = dt.cur[idx]$up_BP
                 region_chrs = c(region_chrs, chr.cur)
