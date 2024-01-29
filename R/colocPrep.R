@@ -9,7 +9,7 @@ library(stringi)
 option_list = list(
     make_option(c("--suma"), type="character", default=NULL, help="input summary", metavar="character"),
     make_option(c("--prefix"), type="character", default=NULL, help="output prefix", metavar="character"),
-    make_option(c("--region"), type="character", default=NULL, help="string indicate region, CHR:start-end", metavar="character"),
+    make_option(c("--region"), type="character", default=NULL, help="string indicate region, CHR--start-end", metavar="character"),
     make_option(c("--bgenInf1"), type="character", default=NULL, help="bgen information for 1, yaml", metavar="character"),
     make_option(c("--bgenInf2"), type="character", default=NULL, help="bgen information for 2, yaml", metavar="character")
     )
