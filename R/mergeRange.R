@@ -75,17 +75,20 @@ for(chr.cur in chrs){
         bSelect = FALSE
         for(idx in sel_idx:n){
             if(dt.cur[idx]$low_BP > up_BP){
-                # prevent from select the present block indicated by idx. 
+                # prevent from select the present block indicated by idx.
                 idx = idx - 1
                 start = dt.cur[sel_idx]$low_BP
                 end = dt.cur[idx]$up_BP
                 region_chrs = c(region_chrs, chr.cur)
                 region_starts = c(region_starts, start)
                 region_ends = c(region_ends, end)
+
+                top_snps1 = c(top_snps1, paste(unique(dt.cur[sel_idx:idx]$SNP1), collapse = ","))
+                top_snps2 = c(top_snps2, paste(unique(dt.cur[sel_idx:idx]$SNP2), collapse = ","))
+
                 sel_idx = idx + 1
                 up_BP = dt.cur$up_BP[sel_idx]
-                top_snps1 = c(top_snps1, paste(dt.cur[sel_idx:idx]$SNP1, collapse = ","))
-                top_snps2 = c(top_snps2, paste(dt.cur[sel_idx:idx]$SNP2, collapse = ","))
+
                 bSelect = TRUE
                 break
             }
@@ -96,8 +99,8 @@ for(chr.cur in chrs){
             region_chrs = c(region_chrs, chr.cur)
             region_starts = c(region_starts, start)
             region_ends = c(region_ends, end)
-            top_snps1 = c(top_snps1, paste(dt.cur[sel_idx:n]$SNP1, collapse = ","))
-            top_snps2 = c(top_snps2, paste(dt.cur[sel_idx:n]$SNP2, collapse = ","))
+            top_snps1 = c(top_snps1, paste(unique(dt.cur[sel_idx:n]$SNP1), collapse = ","))
+            top_snps2 = c(top_snps2, paste(unique(dt.cur[sel_idx:n]$SNP2), collapse = ","))
             break
         }
     }

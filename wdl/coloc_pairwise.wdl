@@ -93,7 +93,7 @@ task mergeAll {
     runtime{
         cpu: 2
         memory: "2 GB"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.2"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
         disks: "local-disk 10 SSD"
     }
@@ -120,7 +120,7 @@ task mergeResults {
     runtime{
         cpu: 2
         memory: "4 GB"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.2"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
         disks: "local-disk 10 SSD"
     }
@@ -160,7 +160,7 @@ task mergeRegion{
     runtime{
         cpu: 2
         memory: "4 GB"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.1"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
         disks: "local-disk 20 SSD"
     }
@@ -225,7 +225,7 @@ task mergeClump{
         gcsfuse --implicit-dirs ${bucket1} ${mount1} 
 
         echo "=====Clumping summary 1"
-        plink --bfile ${geno1} --clump ~{outPrefix}_clump1.txt --extract ~{outPrefix}_clump1.snplist --clump-p1 ~{sigThresh1} --clump-p2 ~{sigThresh1} --clump-r2 ~{r2} --clump-kb ~{windowKB} --out ~{outPrefix}_clump1 --threads 1
+        plink --bfile ${geno1} --clump ~{outPrefix}_clump1.txt --extract ~{outPrefix}_clump1.snplist --clump-p1 ~{sigThresh1} --clump-p2 ~{sigThresh1} --clump-r2 ~{r2} --clump-kb ~{windowKB} --out ~{outPrefix}_clump1 --memory 12288  --threads 1
         fusermount -uz ${mount1}
 
         echo "====Mount genotype2"
@@ -234,7 +234,7 @@ task mergeClump{
         gcsfuse --implicit-dirs ${bucket2} ${mount2} 
 
         echo "=====Clumping summary 2"
-        plink --bfile ${geno2} --clump ~{outPrefix}_clump2.txt --extract ~{outPrefix}_clump2.snplist --clump-p1 ~{sigThresh2} --clump-p2 ~{sigThresh2} --clump-r2 ~{r2} --clump-kb ~{windowKB} --out ~{outPrefix}_clump2 --threads 1
+        plink --bfile ${geno2} --clump ~{outPrefix}_clump2.txt --extract ~{outPrefix}_clump2.snplist --clump-p1 ~{sigThresh2} --clump-p2 ~{sigThresh2} --clump-r2 ~{r2} --clump-kb ~{windowKB} --out ~{outPrefix}_clump2 --memory 12288 --threads 1
         fusermount -uz ${mount2}
 
         echo "=====Merging the ranges"
@@ -257,9 +257,9 @@ task mergeClump{
     runtime{
         cpu: 2
         memory: "16 GB"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.1"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
-        disks: "local-disk 25 SSD"
+        disks: "local-disk 25 HDD"
     }
 
     output {
@@ -308,7 +308,7 @@ task colocPrep{
         cpu: 2
         memory: "16 GB"
         disks: "local-disk 20 SSD"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.1"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
     }
 }
@@ -376,7 +376,7 @@ task colocLD{
     }
 
     runtime {
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.1"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         cpu: "${cpu}"
         memory: "12 GB"
         disks: "local-disk 50 SSD"
@@ -404,7 +404,7 @@ task finemap {
         cpu: 4
         memory: "${mem} GB"
         disks: "local-disk 15 SSD"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.1"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
     }
 }
@@ -427,7 +427,7 @@ task coloc {
         cpu: 1
         memory: "5 GB"
         disks: "local-disk 15 SSD"
-        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.1"
+        docker: "europe-docker.pkg.dev/finngen-refinery-dev/eu.gcr.io/coloc.susie:0.1.4"
         zones: "europe-west1-b"
     }
 }
